@@ -25,10 +25,9 @@ char *new_getpass(char *name) {
   while(read(fileno(stdin), &data, 1) !=0) {
    if(data == '\n') {done = 1; break; }
    ret[pos++] = data;
-   if((pos%CHUNK)==0) { 
-    printf("%d\n", pos+CHUNK);
+   if((pos%CHUNK)==0) 
     ret = realloc(ret, pos+CHUNK);
-   }
+   
    printf("\33[5D%s):", ((pos&1)==1 ? "o_O" : "O_o"));
    fflush(stdout);
   } 
